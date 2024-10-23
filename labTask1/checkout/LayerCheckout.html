@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="javaScript.js"></script>
+    <title>Check Out</title>
+
+    <style>
+      *{
+          box-sizing: border-box;
+          padding: 0;
+          margin: 0;
+      }
+      body{
+          background-color: #1E3E62;
+      }
+
+
+      button.btn-color{
+          background-color: #EC8305;
+      }
+
+
+      .requried{
+        display: none;
+      }
+
+    </style>
+
+</head>
+<body>
+    <div class="From-div border container w-50 mt-5 rounded-3 bg-light shadow-lg">
+        <h2 class="text-center p-3 text-decoration-underline">Check Out</h2>
+        <form action="" class="p-3" id="checkoutForm">
+          <div class="mb-3 mt-3">
+            <label for="fName" class="form-label fw-bold">Name:</label>
+            <input type="text" class="form-control" id="fName" placeholder="Enter Name" name="name">
+            <p class="text-danger p-2 requried" id="name-error"></p>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label fw-bold">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email">
+            <p class="text-danger p-2 requried" id="email-error"></p>
+          </div>
+          <div class="mb-3">
+            <label for="Address" class="form-label fw-bold">Address:</label><span class="text-danger float-end requried" id="add-error"></span> 
+            <textarea name="Address" class="form-control" id="Address" cols="30" rows="5" placeholder="Enter Address"></textarea>
+          </div>
+          <div class="mb-3">
+              <label for="sel1" class="form-label fw-bold">Select City:</label><span class="text-danger float-end requried" id="city-error"></span>
+              <select class="form-select" id="sel1" name="sellist1" aria-placeholder="Select City">
+                <option value="">Select City</option>
+                  <option value="Abbottabad">Abbottabad</option>
+                  <option value="Attock">Attock</option>
+                  <option value="Badin">Badin</option>
+                  <option value="Bahawalpur">Bahawalpur</option>
+                  <option value="Bannu">Bannu</option>
+                  <option value="Bhakkar">Bhakkar</option>
+                  <option value="Chakwal">Chakwal</option>
+                  <option value="Chiniot">Chiniot</option>
+                  <option value="Dera Ghazi Khan">Dera Ghazi Khan</option>
+                  <option value="Dera Ismail Khan">Dera Ismail Khan</option>
+                  <option value="Faisalabad">Faisalabad</option>
+                  <option value="Gujranwala">Gujranwala</option>
+                  <option value="Gujrat">Gujrat</option>
+                  <option value="Hafizabad">Hafizabad</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Islamabad">Islamabad</option>
+                  <option value="Jhang">Jhang</option>
+                  <option value="Jhelum">Jhelum</option>
+                  <option value="Kasur">Kasur</option>  
+                  <option value="Dera Ghazi Khan">Dera Ghazi Khan</option>
+                  <option value="Dera Ismail Khan">Dera Ismail Khan</option>
+                  <option value="Faisalabad">Faisalabad</option>
+                  <option value="Gujranwala">Gujranwala</option>
+                  <option value="Gujrat">Gujrat</option>
+                  <option value="Hafizabad">Hafizabad</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Islamabad">Islamabad</option>
+                  <option value="Jhang">Jhang</option>
+                  <option value="Jhelum">Jhelum</option>
+                  <option value="Kasur">Kasur</option>
+                  <option value="Karachi">Karachi</option>
+                  <option value="Khushab">Khushab</option>
+                  <option value="Kohat">Kohat</option>
+                  <option value="KPK">KPK</option>
+                  <option value="Lahore">Lahore</option>
+                  <option value="Larkana">Larkana</option>
+                  <option value="Layyah">Layyah</option>
+                  <option value="Mandi Bahauddin">Mandi Bahauddin</option>
+                  <option value="Mansehra">Mansehra</option>
+                  <option value="Mardan">Mardan</option>
+                  <option value="Matiari">Matiari</option>
+                  <option value="Mirpur">Mirpur</option>
+                  <option value="Mingora">Mingora</option>
+                  <option value="Multan">Multan</option> 
+                  <option value="Muzaffargarh">Muzaffargarh</option>
+                  <option value="Narowal">Narowal</option>
+                  <option value="Nowshera">Nowshera</option>
+                  <option value="Okara">Okara</option>
+                  <option value="Pakpattan">Pakpattan</option>
+                  <option value="Peshawar">Peshawar</option>
+                  <option value="Quetta">Quetta</option>
+                  <option value="Rahim Yar Khan">Rahim Yar Khan</option>
+                  <option value="Rawalpindi">Rawalpindi</option>
+                  <option value="Sahiwal">Sahiwal</option>
+                  <option value="Sargodha">Sargodha</option>
+                  <option value="Sheikhupura">Sheikhupura</option>
+                  <option value="Shikarpur">Shikarpur</option>
+                  <option value="Sialkot">Sialkot</option>
+                  <option value="Sukkur">Sukkur</option>
+                  <option value="Tando Allahyar">Tando Allahyar</option>
+                  <option value="Toba Tek Singh">Toba Tek Singh</option>
+              </select>
+            </div>
+          <div class="form-check mb-3">
+            <label class="form-check-label">
+              <input class="form-check-input fw-bold" type="checkbox" name="remember"> Remember me
+            </label>
+          </div>
+          <button type="submit" id="submit-btn" class="rounded-3 p-1 border-0 w-100 btn-color text-light fw-bold">Submit</button>
+      </form>
+    </div>
+</body>
+</html>
