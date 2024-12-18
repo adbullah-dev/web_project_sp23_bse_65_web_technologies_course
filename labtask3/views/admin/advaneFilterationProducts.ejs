@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Products</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .pagination {
+      display: flex;
+      list-style: none;
+      gap: 5px;
+      padding: 0;
+    }
+
+    .pagination li {
+      padding: 5px 10px;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+
+    .pagination li.active {
+      background-color: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .filters input,
+    .filters select {
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .filters button {
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>All Products</h1>
+
+    <!-- Filters Section -->
+    <div class="filters">
+      <form method="GET" action="/api/admin/products">
+        <input
+          type="text"
+          name="search"
+          placeholder="Search by title, description, or brand"
+          value="<%= search %>"
+        />
+        <select name="sortBy">
+          <option value="price" <%= sortBy === 'price' ? 'selected' : '' %>>Sort by Price</option>
+          <option value="title" <%= sortBy === 'title' ? 'selected' : '' %>>Sort by Title</option>
+          <option value="brand" <%= sortBy === 'brand' ? 'selected' : '' %>>Sort by Brand</option>
+        </select>
+        <select name="sortOrder">
+          <option value="asc" <%= sortOrder === 'asc' ? 'selected' : '' %>>Ascending</option>
+          <option value="desc" <%= sortOrder === 'desc' ? 'selected' : '' %>>Descending</option>
+        </select>
+        <input type="hidden" name="page" value="1" />
+        <input type="hidden" name="limit" value="<%= limit %>" />
+        <button type="submit">Apply Filters</button>
+      </form>
+    </div>
+
+    <!-- Products Table -->
+    <table border="1" cellpadding="10" cellspacing="0" style="width: 100%; text-align: left;">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Brand</th>
+          <th>Quantity</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (products.length > 0) { %>
+          <% products.forEach((product, index) => { %>
+            <tr>
+              <td><%= (currentPage - 1) * limit + index + 1 %></td>
+              <td><%= product.title %></td>
+              <td><%= product.description %></td>
+              <td><%= product.price %></td>
+              <td><%= product.brand %></td>
+              <td><%= product.quantity %></td>
+              <td>
+                <a href="/api/admin/products/<%= product._id %>" class="btn btn-view">View</a>
+                <form action="/api/admin/products/<%= product._id %>?_method=DELETE" method="POST" style="display: inline;">
+                  <button type="submit" class="btn btn-delete">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }); %>
+        <% } else { %>
+          <tr>
+            <td colspan="7">No products found.</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+
+    <!-- Pagination Section -->
+    <div>
+      <ul class="pagination">
+        <% for (let i = 1; i <= totalPages; i++) { %>
+          <li class="<%= i === currentPage ? 'active' : '' %>">
+            <a
+              href="?search=<%= search %>&sortBy=<%= sortBy %>&sortOrder=<%= sortOrder %>&page=<%= i %>&limit=<%= limit %>">
+              <%= i %>
+            </a>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
